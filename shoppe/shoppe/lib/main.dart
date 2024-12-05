@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoppe/screens/banner_screen.dart';
+import 'package:shoppe/screens/calender_screen.dart';
 import 'package:shoppe/screens/categories_screen.dart';
 import 'package:shoppe/screens/live_screen.dart';
 import 'package:shoppe/screens/password_recovery_screen.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/storybanner_screen': (context) => const BannerPage(),
         '/variation_screen': (context) => const VariationsScreen(),
         '/recent_screen': (context) => const RecentlyViewedScreen(),
+        '/calender_screen': (context) => const CalenderScreen(),
       },
     );
   }
