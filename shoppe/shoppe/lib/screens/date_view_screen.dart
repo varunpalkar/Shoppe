@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/screens/date_view_screen.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -16,38 +15,23 @@ import 'package:shoppe/screens/date_view_screen.dart';
 //       theme: ThemeData(
 //         primarySwatch: Colors.blue,
 //       ),
-//       home: const CalenderScreen(),
+//       home: const DateViewedScreen(),
 //     );
 //   }
 // }
 
-class CalenderScreen extends StatefulWidget {
-  const CalenderScreen({super.key});
+class DateViewedScreen extends StatefulWidget {
+  const DateViewedScreen({super.key});
 
   @override
   _RecentlyViewedScreenState createState() => _RecentlyViewedScreenState();
 }
 
-class _RecentlyViewedScreenState extends State<CalenderScreen> {
+class _RecentlyViewedScreenState extends State<DateViewedScreen> {
   String selectedButton = 'Today';
-  DateTime selectedDate = DateTime.now();
-
-  // Helper function to get a list of days for the current month
-  List<DateTime> _getDaysInMonth(DateTime month) {
-    final firstDayOfMonth = DateTime(month.year, month.month, 1);
-    final lastDayOfMonth = DateTime(month.year, month.month + 1, 0);
-    List<DateTime> daysInMonth = [];
-    
-    for (int i = 0; i < lastDayOfMonth.day; i++) {
-      daysInMonth.add(firstDayOfMonth.add(Duration(days: i)));
-    }
-    return daysInMonth;
-  }
 
   @override
   Widget build(BuildContext context) {
-    List<DateTime> daysInMonth = _getDaysInMonth(selectedDate);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -69,98 +53,28 @@ class _RecentlyViewedScreenState extends State<CalenderScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Custom Calendar Widget
+            // Toggle Buttons Row
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 242, 232, 232),
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 6,
-                      offset: const Offset(0, 3),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              child: Row(
+                children: [
+                  _buildToggleButton('Today'),
+                  const SizedBox(width: 8),
+                  _buildToggleButton('December 07'),
+                  const Spacer(),
+                  // Dropdown Button
+                  IconButton(
+                    onPressed: () {
+                      // Add dropdown functionality
+                    },
+                    icon: const Icon(
+                      Icons.arrow_drop_down,
+                      color: Color(0xFF004BFE),
                     ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    // Calendar Header (Month & Year)
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.arrow_left),
-                            onPressed: () {
-                              setState(() {
-                                selectedDate = DateTime(selectedDate.year, selectedDate.month - 1);
-                              });
-                            },
-                          ),
-                          Text(
-                            '${selectedDate.month} / ${selectedDate.year}',
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.arrow_right),
-                            onPressed: () {
-                              setState(() {
-                                selectedDate = DateTime(selectedDate.year, selectedDate.month + 1);
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Calendar Grid (Days of the month)
-                    GridView.builder(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(8.0),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 7,
-                        crossAxisSpacing: 8.0,
-                        mainAxisSpacing: 8.0,
-                      ),
-                      itemCount: daysInMonth.length,
-                      itemBuilder: (context, index) {
-                        DateTime day = daysInMonth[index];
-                        bool isSelected = day.day == selectedDate.day &&
-                            day.month == selectedDate.month &&
-                            day.year == selectedDate.year;
-
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedDate = day;
-                            });
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: isSelected ? Colors.lightBlue : Colors.transparent,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.grey, width: 0.5),
-                            ),
-                            child: Center(
-                              child: Text(
-                                '${day.day}',
-                                style: TextStyle(
-                                  color: isSelected ? Colors.white : Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 20),
             // Scrollable Content
             Expanded(
               child: Padding(
@@ -199,6 +113,7 @@ class _RecentlyViewedScreenState extends State<CalenderScreen> {
               MaterialPageRoute(builder: (_) => const DateViewedScreen()),
             );
           }
+          
         },
         items: const [
           BottomNavigationBarItem(
@@ -222,6 +137,39 @@ class _RecentlyViewedScreenState extends State<CalenderScreen> {
             label: '',
           ),
         ],
+      ),
+    );
+  }
+
+  // Build Toggle Button
+  Widget _buildToggleButton(String text) {
+    bool isSelected = text == selectedButton;
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedButton = text;
+        });
+      },
+      child: Container(
+        width: 146,
+        height: 30,
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.blue : Colors.transparent,
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color: isSelected ? Colors.blue : Colors.grey,
+          ),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          text,
+          style: TextStyle(
+            fontFamily: 'Raleway',
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: isSelected ? Colors.white : Colors.black,
+          ),
+        ),
       ),
     );
   }
