@@ -71,6 +71,8 @@ flutter:
     - assets/image2.png
     - assets/image3.png
     - assets/image4.png
+    - assets/image5.png
+    - assets/image6.png
     - assets/live.png
     - assets/forward_icon.png
     - assets/image.png

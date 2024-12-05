@@ -320,12 +320,13 @@ Padding(
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Buy now functionality
+                      Navigator.pushNamed(context, '/recent_screen');  // Buy now functionality
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF0015E7),
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
+                    
                     child: const Text(
                       'Buy now',
                       style: TextStyle(color: Colors.white),

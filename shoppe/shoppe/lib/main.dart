@@ -8,6 +8,7 @@ import 'package:shoppe/screens/product_screen.dart';
 import 'package:shoppe/screens/profile_screen.dart';
 import 'package:shoppe/screens/password_screen.dart';
 import 'package:shoppe/screens/ready_screen.dart';
+import 'package:shoppe/screens/recent_screen.dart';
 import 'package:shoppe/screens/review_screen.dart';
 import 'package:shoppe/screens/sale_screen.dart';
 import 'package:shoppe/screens/story_screen.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/banner_screen': (context) => const CustomPage(),
         '/storybanner_screen': (context) => const BannerPage(),
         '/variation_screen': (context) => const VariationsScreen(),
+        '/recent_screen': (context) => const RecentlyViewedScreen(),
       },
     );
   }
