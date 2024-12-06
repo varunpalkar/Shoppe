@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoppe/screens/banner_screen.dart';
 import 'package:shoppe/screens/calender_screen.dart';
+import 'package:shoppe/screens/cart_empty_screen.dart';
 import 'package:shoppe/screens/categories_screen.dart';
 import 'package:shoppe/screens/date_view_screen.dart';
 import 'package:shoppe/screens/live_screen.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         '/recent_screen': (context) => const RecentlyViewedScreen(),
         '/calender_screen': (context) => const CalenderScreen(),
         '/date_view_screen': (context) => const DateViewedScreen(),
+        '/cart_empty_screen': (context) => const CartPage(),
       },
     );
   }

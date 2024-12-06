@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppe/screens/cart_empty_screen.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -110,7 +111,7 @@ class _RecentlyViewedScreenState extends State<DateViewedScreen> {
             // Navigate to RecentlyViewedScreen
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const DateViewedScreen()),
+              MaterialPageRoute(builder: (_) => const CartPage()),
             );
           }
           
