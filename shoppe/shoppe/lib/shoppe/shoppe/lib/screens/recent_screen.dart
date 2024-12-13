@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/screens/cart_empty_screen.dart';
+import 'package:shoppe/screens/calender_screen.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -16,19 +16,19 @@ import 'package:shoppe/screens/cart_empty_screen.dart';
 //       theme: ThemeData(
 //         primarySwatch: Colors.blue,
 //       ),
-//       home: const DateViewedScreen(),
+//       home: const RecentlyViewedScreen(),
 //     );
 //   }
 // }
 
-class DateViewedScreen extends StatefulWidget {
-  const DateViewedScreen({super.key});
+class RecentlyViewedScreen extends StatefulWidget {
+  const RecentlyViewedScreen({super.key});
 
   @override
   _RecentlyViewedScreenState createState() => _RecentlyViewedScreenState();
 }
 
-class _RecentlyViewedScreenState extends State<DateViewedScreen> {
+class _RecentlyViewedScreenState extends State<RecentlyViewedScreen> {
   String selectedButton = 'Today';
 
   @override
@@ -61,7 +61,7 @@ class _RecentlyViewedScreenState extends State<DateViewedScreen> {
                 children: [
                   _buildToggleButton('Today'),
                   const SizedBox(width: 8),
-                  _buildToggleButton('December 07'),
+                  _buildToggleButton('Yesterday'),
                   const Spacer(),
                   // Dropdown Button
                   IconButton(
@@ -87,7 +87,7 @@ class _RecentlyViewedScreenState extends State<DateViewedScreen> {
                     mainAxisSpacing: 12,
                     childAspectRatio: 0.65,
                   ),
-                  itemCount: 10, // Replace with the actual item count
+                  itemCount: 6, // Replace with the actual item count
                   itemBuilder: (context, index) {
                     return _buildProductCard(
                       image: 'assets/image${index + 1}.png', // Replace with actual paths
@@ -111,7 +111,7 @@ class _RecentlyViewedScreenState extends State<DateViewedScreen> {
             // Navigate to RecentlyViewedScreen
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const CartPage()),
+              MaterialPageRoute(builder: (_) => const CalenderScreen()),
             );
           }
           

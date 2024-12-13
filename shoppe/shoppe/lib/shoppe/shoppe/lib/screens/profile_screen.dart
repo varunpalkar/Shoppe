@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: ProfilePage(),
-//     );
-//   }
-// }
-
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
@@ -37,39 +21,30 @@ class ProfilePage extends StatelessWidget {
         ),
         title: Padding(
           padding: const EdgeInsets.only(top: 20),
-          child: Row(
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF004CFF),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-                ),
-                onPressed: () {
-                  print("My Activity button pressed");
-                },
-                child: Text(
-                  "My Activity",
-                  style: GoogleFonts.raleway(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                ),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF004CFF),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
               ),
-              const SizedBox(width: 80),
-              const Icon(
-                Icons.card_giftcard,
-                color: Color(0xFF004CFF),
-                size: 24,
+            ),
+            onPressed: () {
+              // Add functionality for "My Activity" here
+              print("My Activity button pressed");
+            },
+            child: Text(
+              "My Activity",
+              style: GoogleFonts.raleway(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
               ),
-            ],
+            ),
           ),
         ),
         actions: const [
           Padding(
-            padding: EdgeInsets.only(right: 28.0, top: 20),
+            padding: EdgeInsets.only(right: 24.0, top: 20),
             child: Row(
               children: [
                 Icon(Icons.menu, color: Color(0xFF004CFF)),
@@ -126,7 +101,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/live_screen');
+                      Navigator.pushNamed(context, '/live_screen'); // Navigate to the live screen
                     },
                     child: const Icon(
                       Icons.arrow_forward,
@@ -225,7 +200,6 @@ class ProfilePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(5, (index) {
-                  String imageName = 'assets/image${index + 1}.png';
                   return Container(
                     width: 60,
                     height: 60,
@@ -240,10 +214,10 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Center(
+                    child: const Center(
                       child: CircleAvatar(
                         radius: 25,
-                        backgroundImage: AssetImage(imageName),
+                        backgroundImage: AssetImage('assets/image1.png'),
                       ),
                     ),
                   );

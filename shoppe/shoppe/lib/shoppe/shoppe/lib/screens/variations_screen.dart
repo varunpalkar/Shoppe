@@ -120,7 +120,6 @@ class _ProductPageState extends State<VariationsScreen> {
                   ),
 
                   // Color Options
-                  const SizedBox(height: 12),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 18),
                     child: Text(

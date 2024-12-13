@@ -87,7 +87,7 @@ class _RecentlyViewedScreenState extends State<DateViewedScreen> {
                     mainAxisSpacing: 12,
                     childAspectRatio: 0.65,
                   ),
-                  itemCount: 10, // Replace with the actual item count
+                  itemCount: 6, // Replace with the actual item count
                   itemBuilder: (context, index) {
                     return _buildProductCard(
                       image: 'assets/image${index + 1}.png', // Replace with actual paths
